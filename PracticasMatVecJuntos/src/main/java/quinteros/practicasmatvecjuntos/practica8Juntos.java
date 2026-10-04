@@ -92,7 +92,7 @@ public class practica8Juntos {
         for(int x = 0 ; x < 4 ; x++){
             suma = 0;
             for(int y = 0 ; y < 5 ; y++){
-                suma = suma + ventas[x][y];
+                suma = suma + ventas[y][x];
             }
             totalVendidoSemanal[x] = suma;
         }
@@ -194,12 +194,20 @@ public class practica8Juntos {
                      ventaAcumulada[y+1] = auxVenta;
                      
                     auxProd = productos[y];
-                    productos[y]
+                    productos[y] = productos[y+1];
+                    productos[y+1] = auxProd;
                 }
             }
         }
+        imprimirVec("----Vectores Ordenados-----");
     }
     
+    public void imprimirVec(String mjs){
+        System.out.println(mjs);
+        for(int x = 0 ; x < 5 ; x++){
+            System.out.print("producto: " + productos[x] + " - Venta Acumulada: " + ventaAcumulada[x]);
+        }
+    }
         
     public static void main(String[] args) {
         System.out.println("Hello World!");
@@ -211,5 +219,7 @@ public class practica8Juntos {
         p.buscarProductoMayorVenta();
         p.buscarProdMenorVenta();
         p.buscarMayorVentasSemana();
+        p.imprimirVec("----Vectores sin ordenar-----");
+        p.ordenarMenorMayor();
     }         
 }
